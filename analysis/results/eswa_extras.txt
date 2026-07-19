@@ -1,0 +1,10 @@
+===== A2-08  Clean descriptive top-5: real vs control =====
+  ap: n=225 real=0.468 random=0.457 diff(real-random)=+0.010 95%CI[-0.014,+0.034] Wilcoxon p=0.308
+  precision_at_5: n=225 real=0.372 random=0.358 diff(real-random)=+0.014 95%CI[-0.016,+0.045] Wilcoxon p=0.196
+  -> interpretation: CI of (real-random) for AP and P@5 includes/excludes 0?
+
+===== A2-07  Operating reliability rule (tau=0.80) =====
+  LIME (agnostic)  n=1000 base_unreliable=0.70 flag_rate=0.71 prec=0.89 recall=0.89 FPR=0.27 rho(cheap,crossseed)=+0.80
+  Model-matched    n=4000 base_unreliable=0.31 flag_rate=0.26 prec=0.50 recall=0.41 FPR=0.19 rho(cheap,crossseed)=+0.40
+  OVERALL          n=5000 prec=0.66 recall=0.58 FPR=0.20
+  (TP=1143 FP=593 FN=816 TN=2448)

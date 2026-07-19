@@ -1,0 +1,11 @@
+ds,estimator,n,rho,ci_lo,ci_hi
+adult,ens_var,200,0.572,0.471,0.659
+adult,entropy,200,0.635,0.544,0.711
+credit_g,ens_var,200,0.022,-0.117,0.16
+credit_g,entropy,200,0.127,-0.012,0.261
+bank_marketing,ens_var,200,0.023,-0.117,0.161
+bank_marketing,entropy,200,0.068,-0.072,0.204
+ccdefault,ens_var,200,-0.472,-0.573,-0.356
+ccdefault,entropy,200,-0.431,-0.538,-0.311
+electricity,ens_var,200,0.455,0.338,0.558
+electricity,entropy,200,0.605,0.509,0.686

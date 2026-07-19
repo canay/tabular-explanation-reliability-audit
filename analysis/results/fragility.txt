@@ -1,0 +1,17 @@
+=== Does top-5 MARGIN predict cross-seed stability? Spearman(margin, crossseed top5) ===
+  LIME           n=2000 rho=+0.240  base_unstable=0.70
+  Model-matched  n=9700 rho=+0.180  base_unstable=0.30
+
+=== Signal quality (ROC-AUC vs 'unstable'; recall at FPR<=0.20) ===
+  LIME           margin-only      AUC=0.630  recall@FPR0.20=0.35
+  LIME           old(samp,pert)   AUC=0.600  recall@FPR0.20=0.47
+  LIME           combined         AUC=0.630  recall@FPR0.20=0.35
+  Model-matched  margin-only      AUC=0.575  recall@FPR0.20=0.30
+  Model-matched  old(samp,pert)   AUC=0.545  recall@FPR0.20=0.32
+  Model-matched  combined         AUC=0.575  recall@FPR0.20=0.30
+
+=== Operating point comparison (model-matched): old rule vs margin-augmented ===
+  delta=0.02: prec=0.39 recall=0.52 FPR=0.36 (old rule recall was 0.16)
+  delta=0.05: prec=0.34 recall=0.75 FPR=0.63 (old rule recall was 0.16)
+  delta=0.08: prec=0.33 recall=0.86 FPR=0.78 (old rule recall was 0.16)
+  delta=0.10: prec=0.32 recall=0.90 FPR=0.84 (old rule recall was 0.16)

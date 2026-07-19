@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+*.key
+*token*
+
+# A full run belongs in an isolated local workspace.
+full_run/
+models/
+expl/
+perturb/
+data/*.npz
+
+# Local scratch and logs.
+tmp/
+logs/
+*.log

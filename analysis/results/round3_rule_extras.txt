@@ -1,0 +1,29 @@
+===== A3-01: matched-sample AUCs (same sample as tab:rule; no imputation) =====
+  LIME           n= 1000 base=0.700  AUC(self-consistency)=0.901  AUC(margin, same sample n=1000)=0.631
+  Model-matched  n= 4000 base=0.315  AUC(self-consistency)=0.689  AUC(margin, same sample n=4000)=0.577
+  (fragility.txt extended sample, samp/pert imputed to 1.0 where unavailable: LIME margin 0.630 vs self-cons 0.600; MM margin 0.575 vs self-cons 0.545)
+
+===== A3-10: always-flag baseline + tau sensitivity (flag and ground truth share tau) =====
+  tau=0.70 LIME           base=0.36 flag=0.35 prec=0.78 rec=0.75 FPR=0.12
+  tau=0.70 Model-matched  base=0.13 flag=0.10 prec=0.38 rec=0.29 FPR=0.07
+
+  tau=0.80 LIME           base=0.70 flag=0.71 prec=0.89 rec=0.89 FPR=0.27
+  tau=0.80 Model-matched  base=0.31 flag=0.26 prec=0.50 rec=0.41 FPR=0.19
+
+  tau=0.90 LIME           base=0.91 flag=0.96 prec=0.94 rec=0.99 FPR=0.69
+  tau=0.90 Model-matched  base=0.54 flag=0.69 prec=0.63 rec=0.80 FPR=0.55
+
+  always-flag baseline at tau=0.80, LIME: precision=0.70 recall=1.00 FPR=1.00
+  always-flag baseline at tau=0.80, Model-matched: precision=0.31 recall=1.00 FPR=1.00
+
+===== A3-02: wilcoxon.csv verification =====
+  nominal p<0.05: 34 of 40; sig_bonf: 32; sig_holm: 33; sig_bh: 33
+  8 non-Bonferroni cells (r [CI]):
+    bank_marketing rf     top5   p=0.658 r=+0.07 CI=[-0.25,+0.40] holm=False bh=False
+    bank_marketing rf     cosine p=0.062 r=-0.30 CI=[-0.57,+0.02] holm=False bh=False
+    bank_marketing hgb    top5   p=0.100 r=-0.28 CI=[-0.59,+0.06] holm=False bh=False
+    bank_marketing hgb    cosine p=0.954 r=-0.01 CI=[-0.31,+0.31] holm=False bh=False
+    ccdefault    hgb    cosine p=0.006 r=+0.44 CI=[+0.15,+0.70] holm=True bh=True
+    electricity  rf     top5   p=0.335 r=+0.16 CI=[-0.15,+0.47] holm=False bh=False
+    electricity  hgb    top5   p=0.048 r=+0.33 CI=[+0.01,+0.61] holm=False bh=False
+    electricity  hgb    cosine p=0.399 r=+0.14 CI=[-0.18,+0.47] holm=False bh=False

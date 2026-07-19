@@ -1,0 +1,154 @@
+=== EVAL INSTANCE COUNTS (base explanation n per cell) ===
+  adult
+  credit_g
+  bank_marketing
+  ccdefault
+  electricity
+
+=== TABLE 4 FLIP RATES (pooled by model, %) ===
+  model           s=0.01  s=0.05  s=0.1  s=0.25  s=0.5
+  Logistic regression0.14  0.77  1.47  3.92  7.82
+  Random forest   0.76  1.89  3.09  5.54  8.14
+  Gradient boosting3.10  5.56  7.08  10.04  13.02
+  MLP             0.11  0.88  1.77  4.15  8.10
+  pooled preservation @ sigma=0.25 = 94.1%  (flip 5.9%)
+  per-model flip @0.25: Logistic regression 3.92%, Random forest 5.54%, Gradient boosting 10.04%, MLP 4.15%
+
+=== TABLE 3 DAMAGE pooled top5 (model-matched & LIME) ===
+  Logistic regression LinearSHAP 1.00+-0.00  0.97+-0.02  0.94+-0.03  0.88+-0.06  0.82+-0.10
+  Logistic regression LIME       0.77+-0.07  0.75+-0.08  0.75+-0.09  0.74+-0.10  0.73+-0.11
+  Random forest    TreeSHAP   1.00+-0.00  0.93+-0.06  0.90+-0.07  0.85+-0.08  0.79+-0.08
+  Random forest    LIME       0.80+-0.07  0.79+-0.08  0.78+-0.08  0.78+-0.08  0.77+-0.08
+  Gradient boosting TreeSHAP   1.00+-0.00  0.89+-0.07  0.85+-0.08  0.79+-0.08  0.74+-0.09
+  Gradient boosting LIME       0.72+-0.09  0.70+-0.11  0.69+-0.11  0.69+-0.11  0.68+-0.11
+  MLP              IG         1.00+-0.00  0.95+-0.02  0.92+-0.03  0.84+-0.07  0.75+-0.10
+  MLP              LIME       0.74+-0.07  0.73+-0.09  0.72+-0.09  0.71+-0.10  0.71+-0.10
+  model-matched top5 @0.25 range = 0.79-0.88; @0.5 = 0.74-0.82
+  GB TreeSHAP @0.5: spearman=0.65 sign5=0.85
+  LIME top5 @sigma=0 range = 0.72-0.80
+
+=== TABLE 6 CROSSSEED (top5 +- std / cosine) per ds ===
+  Logistic regression LinearSHAP adul:1.00+-0.00/1.00  cred:1.00+-0.00/1.00  bank:1.00+-0.00/1.00  ccde:1.00+-0.00/1.00  elec:1.00+-0.00/1.00
+  Logistic regression LIME       adul:0.72+-0.06/0.79  cred:0.87+-0.06/0.96  bank:0.78+-0.08/0.73  ccde:0.68+-0.13/0.88  elec:0.79+-0.08/0.92
+  Random forest    TreeSHAP   adul:0.93+-0.06/0.99  cred:0.85+-0.09/0.98  bank:0.90+-0.08/0.99  ccde:0.87+-0.08/0.98  elec:0.93+-0.07/0.99
+  Random forest    LIME       adul:0.80+-0.09/0.85  cred:0.75+-0.08/0.94  bank:0.86+-0.06/0.93  ccde:0.68+-0.14/0.89  elec:0.84+-0.07/0.93
+  Gradient boosting TreeSHAP   adul:0.90+-0.08/0.98  cred:0.71+-0.11/0.88  bank:0.79+-0.09/0.95  ccde:0.71+-0.11/0.90  elec:0.86+-0.07/0.97
+  Gradient boosting LIME       adul:0.62+-0.06/0.84  cred:0.66+-0.09/0.79  bank:0.81+-0.07/0.88  ccde:0.54+-0.15/0.85  elec:0.79+-0.07/0.92
+  MLP              IG         adul:0.85+-0.08/0.95  cred:0.64+-0.09/0.82  bank:0.79+-0.09/0.95  ccde:0.63+-0.13/0.72  elec:0.86+-0.08/0.93
+  MLP              KernelSHAP adul:0.86+-0.08/0.95  cred:0.68+-0.09/0.82  bank:0.80+-0.09/0.94  ccde:0.64+-0.11/0.86  elec:0.89+-0.07/0.98
+  MLP              LIME       adul:0.70+-0.08/0.81  cred:0.64+-0.09/0.81  bank:0.75+-0.09/0.71  ccde:0.58+-0.13/0.81  elec:0.77+-0.07/0.88
+  -- method-level means over all cells --
+    TreeSHAP   top5 mean = 0.845
+    KernelSHAP top5 mean = 0.774
+    IG         top5 mean = 0.756
+    LIME       top5 mean = 0.731
+  retraining replaces top5: 7%-37% (model-matched/kshap stochastic)
+    treeshap rf range 0.85-0.93
+    treeshap hgb range 0.71-0.90
+    ig range 0.63-0.86
+    kshap range 0.64-0.89
+    lowest cell: ccdefault mlp ig = 0.63
+
+=== CONFIDENCE rho_conf_instab (27 cells) ===
+  span -0.644 to 0.662; median -0.014; |rho|>0.3 count = 18 of 45
+    Adult KernelSHAP rho=-0.64
+    Adult IG rho=-0.55
+    bank_marketing hgb LIME rho=+0.34
+    bank_marketing logreg LIME rho=+0.28
+
+=== TABLE 8 MC-DROPOUT ===
+  adult          n=200 pred_sd=0.040 rho_seed=0.580 rho_pert=0.520
+  credit_g       n=200 pred_sd=0.095 rho_seed=0.080 rho_pert=-0.106
+  bank_marketing n=200 pred_sd=0.033 rho_seed=0.202 rho_pert=0.037
+  ccdefault      n=200 pred_sd=0.056 rho_seed=-0.238 rho_pert=-0.629
+  electricity    n=200 pred_sd=0.072 rho_seed=0.200 rho_pert=0.400
+
+=== TABLE 5 WILCOXON (n / sig counts) ===
+  per-cell n: [np.int64(50)]; sig bonf=32 holm=33 bh=33 of 40
+  significant p range: 9.04e-05 (max among sig) ; all sig <1e-4? True
+  smallest r among sig: 0.61
+  non-significant cells:
+    bank_marketing rf top5: p=0.658 r=+0.07 CI[-0.25,+0.40]
+    bank_marketing rf cosine: p=0.062 r=-0.30 CI[-0.57,+0.02]
+    bank_marketing hgb top5: p=0.100 r=-0.28 CI[-0.59,+0.06]
+    bank_marketing hgb cosine: p=0.954 r=-0.01 CI[-0.31,+0.31]
+    ccdefault hgb cosine: p=0.006 r=+0.44 CI[+0.15,+0.70]
+    electricity rf top5: p=0.335 r=+0.16 CI[-0.15,+0.47]
+    electricity hgb top5: p=0.048 r=+0.33 CI[+0.01,+0.61]
+    electricity hgb cosine: p=0.399 r=+0.14 CI[-0.18,+0.47]
+
+=== TABLE 7 SPURIOUS (ranges) ===
+  reliance share range = 0.394-0.699
+  fast salience share range = 0.363-0.721
+  fast top5 range = 0.91-1.00; all rank 1? True
+  LIME salience share range = 0.149-0.538
+
+=== ADDITIONAL ANALYSES (analysis/results, hardening) ===
+  [vardecomp] analysis/results/variance_decomp.csv
+               source_group  sampling_instab  perturbation_instab  retraining_instab
+    0  Model-matched (fast)           0.0000               0.1594             0.1385
+    1                  LIME           0.2438               0.2712             0.2687
+  [delta_agg] analysis/results/delta_sweep_agg.csv
+        delta   model   n  gen_gap  rel_rank  sal_share  attr_rank  top5_frac
+    0    0.25  logreg  25    0.011      3.00      0.114       3.40      0.696
+    1    0.25      rf  25    0.004      4.52      0.088       4.36      0.598
+    2    0.25     hgb  25    0.009      3.40      0.094       3.64      0.596
+    3    0.25     mlp  25    0.015      2.96      0.085       5.40      0.496
+    4    0.50  logreg  25    0.023      1.40      0.226       1.40      0.852
+    5    0.50      rf  25    0.013      1.64      0.218       1.84      0.912
+    6    0.50     hgb  25    0.023      1.72      0.216       1.80      0.878
+    7    0.50     mlp  25    0.023      1.40      0.186       1.64      0.824
+    8    1.00  logreg  25    0.084      1.00      0.410       1.00      0.938
+    9    1.00      rf  25    0.073      1.00      0.385       1.00      0.973
+    10   1.00     hgb  25    0.088      1.00      0.424       1.00      0.950
+    11   1.00     mlp  25    0.086      1.00      0.324       1.00      0.880
+    12   1.50  logreg  25    0.126      1.00      0.529       1.00      0.948
+    13   1.50      rf  25    0.121      1.00      0.482       1.00      0.973
+    14   1.50     hgb  25    0.142      1.00      0.605       1.00      0.960
+    15   1.50     mlp  25    0.121      1.00      0.408       1.00      0.922
+  [broader_unc] analysis/results/broader_uncertainty.csv
+                   ds estimator    n    rho  ci_lo  ci_hi
+    0           adult   ens_var  200  0.572  0.471  0.659
+    1           adult   entropy  200  0.635  0.544  0.711
+    2        credit_g   ens_var  200  0.022 -0.117  0.160
+    3        credit_g   entropy  200  0.127 -0.012  0.261
+    4  bank_marketing   ens_var  200  0.023 -0.117  0.161
+    5  bank_marketing   entropy  200  0.068 -0.072  0.204
+    6       ccdefault   ens_var  200 -0.472 -0.573 -0.356
+    7       ccdefault   entropy  200 -0.431 -0.538 -0.311
+    8     electricity   ens_var  200  0.455  0.338  0.558
+    9     electricity   entropy  200  0.605  0.509  0.686
+  [hardening control recovery]
+      variant    source   ap_mean    p_at_5  recall_at_5  target_top5    n
+    0   clean  constant  0.352407  1.000000     1.000000          NaN  225
+    1   clean    oracle  1.000000  1.000000     1.000000          NaN  225
+    2   clean  permuted  0.464726  0.355556     0.355556          NaN  225
+    3   clean    random  0.457154  0.358222     0.358222          NaN  225
+    4   clean      real  0.467563  0.372444     0.372444          NaN  225
+    5    spur  constant  0.065177  0.000000     0.000000         0.00  200
+    6    spur    oracle  1.000000  0.200000     1.000000         1.00  200
+    7    spur  permuted  0.202932  0.054000     0.270000         0.27  200
+    8    spur    random  0.196532  0.070000     0.350000         0.35  200
+    9    spur      real  0.940833  0.200000     1.000000         1.00  200
+  [synthetic ground truth]
+         model    source        ap  p_at_5  recall_at_10  train_wall  explain_wall  n
+    0      hgb  constant  0.400000    1.00         1.000    0.451846      1.099544  5
+    1      hgb    oracle  1.000000    1.00         1.000    0.451846      1.099544  5
+    2      hgb  permuted  0.445159    0.28         0.450    0.451846      1.099544  5
+    3      hgb    random  0.531537    0.52         0.550    0.451846      1.099544  5
+    4      hgb      real  0.974286    1.00         0.950    0.451846      1.099544  5
+    5   logreg  constant  0.400000    1.00         1.000    0.015653      0.000009  5
+    6   logreg    oracle  1.000000    1.00         1.000    0.015653      0.000009  5
+    7   logreg  permuted  0.525643    0.44         0.425    0.015653      0.000009  5
+    8   logreg    random  0.519229    0.52         0.600    0.015653      0.000009  5
+    9   logreg      real  0.913273    0.96         0.850    0.015653      0.000009  5
+    10     mlp  constant  0.400000    1.00         1.000    0.396968      0.000471  5
+    11     mlp    oracle  1.000000    1.00         1.000    0.396968      0.000471  5
+    12     mlp  permuted  0.461668    0.32         0.500    0.396968      0.000471  5
+    13     mlp    random  0.475903    0.40         0.525    0.396968      0.000471  5
+    14     mlp      real  1.000000    1.00         1.000    0.396968      0.000471  5
+    15      rf  constant  0.400000    1.00         1.000    0.607417      0.088257  5
+    16      rf    oracle  1.000000    1.00         1.000    0.607417      0.088257  5
+    17      rf  permuted  0.470275    0.52         0.375    0.607417      0.088257  5
+    18      rf    random  0.431971    0.28         0.475    0.607417      0.088257  5
+    19      rf      real  1.000000    1.00         1.000    0.607417      0.088257  5

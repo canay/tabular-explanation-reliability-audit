@@ -1,0 +1,106 @@
+==================== TABLE 2 perf (tab:perf) ====================
+\multicolumn{7}{l}{\itshape Adult}\\
+Logistic regression & $0.844 \pm 0.000$ & $0.906 \pm 0.000$ & $0.020 \pm 0.000$ & $0.728 \pm 0.000$ & $0.692 \pm 0.000$ & $0.200 \pm 0.000$\\
+Random forest & $0.847 \pm 0.001$ & $0.906 \pm 0.000$ & $0.042 \pm 0.001$ & $0.766 \pm 0.007$ & $0.806 \pm 0.007$ & $0.070 \pm 0.010$\\
+Gradient boosting & $0.865 \pm 0.002$ & $0.923 \pm 0.001$ & $0.016 \pm 0.005$ & $0.722 \pm 0.004$ & $0.695 \pm 0.010$ & $0.223 \pm 0.002$\\
+MLP & $0.848 \pm 0.002$ & $0.912 \pm 0.001$ & $0.022 \pm 0.003$ & $0.736 \pm 0.004$ & $0.731 \pm 0.004$ & $0.213 \pm 0.003$\\
+\multicolumn{7}{l}{\itshape German Credit}\\
+Logistic regression & $0.777 \pm 0.000$ & $0.826 \pm 0.000$ & $0.066 \pm 0.000$ & $0.590 \pm 0.000$ & $0.530 \pm 0.000$ & $0.323 \pm 0.000$\\
+Random forest & $0.750 \pm 0.008$ & $0.827 \pm 0.008$ & $0.078 \pm 0.013$ & $0.619 \pm 0.025$ & $0.640 \pm 0.010$ & $0.164 \pm 0.017$\\
+Gradient boosting & $0.759 \pm 0.010$ & $0.808 \pm 0.007$ & $0.070 \pm 0.016$ & $0.569 \pm 0.007$ & $0.511 \pm 0.018$ & $0.370 \pm 0.008$\\
+MLP & $0.783 \pm 0.004$ & $0.826 \pm 0.011$ & $0.061 \pm 0.009$ & $0.649 \pm 0.016$ & $0.591 \pm 0.015$ & $0.229 \pm 0.030$\\
+\multicolumn{7}{l}{\itshape Bank Marketing}\\
+Logistic regression & $0.901 \pm 0.000$ & $0.910 \pm 0.000$ & $0.027 \pm 0.000$ & $0.852 \pm 0.000$ & $0.675 \pm 0.000$ & $0.108 \pm 0.000$\\
+Random forest & $0.899 \pm 0.001$ & $0.923 \pm 0.001$ & $0.036 \pm 0.001$ & $0.852 \pm 0.003$ & $0.839 \pm 0.004$ & $0.064 \pm 0.003$\\
+Gradient boosting & $0.908 \pm 0.002$ & $0.930 \pm 0.002$ & $0.017 \pm 0.002$ & $0.859 \pm 0.001$ & $0.656 \pm 0.010$ & $0.113 \pm 0.002$\\
+MLP & $0.906 \pm 0.002$ & $0.926 \pm 0.001$ & $0.011 \pm 0.003$ & $0.859 \pm 0.002$ & $0.738 \pm 0.009$ & $0.110 \pm 0.001$\\
+\multicolumn{7}{l}{\itshape Default of credit card clients}\\
+Logistic regression & $0.809 \pm 0.000$ & $0.713 \pm 0.000$ & $0.049 \pm 0.000$ & $0.679 \pm 0.000$ & $0.548 \pm 0.000$ & $0.247 \pm 0.000$\\
+Random forest & $0.817 \pm 0.001$ & $0.779 \pm 0.001$ & $0.014 \pm 0.001$ & $0.687 \pm 0.003$ & $0.664 \pm 0.001$ & $0.191 \pm 0.006$\\
+Gradient boosting & $0.815 \pm 0.002$ & $0.773 \pm 0.002$ & $0.017 \pm 0.004$ & $0.690 \pm 0.001$ & $0.570 \pm 0.006$ & $0.249 \pm 0.002$\\
+MLP & $0.817 \pm 0.001$ & $0.763 \pm 0.002$ & $0.022 \pm 0.004$ & $0.681 \pm 0.002$ & $0.554 \pm 0.003$ & $0.248 \pm 0.002$\\
+\multicolumn{7}{l}{\itshape Electricity}\\
+Logistic regression & $0.764 \pm 0.000$ & $0.825 \pm 0.000$ & $0.021 \pm 0.000$ & $0.585 \pm 0.000$ & $0.604 \pm 0.000$ & $0.322 \pm 0.000$\\
+Random forest & $0.820 \pm 0.002$ & $0.899 \pm 0.001$ & $0.056 \pm 0.002$ & $0.586 \pm 0.003$ & $0.697 \pm 0.002$ & $0.253 \pm 0.004$\\
+Gradient boosting & $0.875 \pm 0.002$ & $0.944 \pm 0.002$ & $0.017 \pm 0.003$ & $0.623 \pm 0.004$ & $0.641 \pm 0.012$ & $0.305 \pm 0.004$\\
+MLP & $0.790 \pm 0.002$ & $0.864 \pm 0.001$ & $0.023 \pm 0.002$ & $0.594 \pm 0.002$ & $0.619 \pm 0.002$ & $0.321 \pm 0.005$\\
+
+==================== TABLE 3 damage (tab:damage) pooled top5 ====================
+Logistic regression & LinearSHAP & $1.00 \pm 0.00$ & $0.97 \pm 0.02$ & $0.94 \pm 0.03$ & $0.88 \pm 0.06$ & $0.82 \pm 0.10$\\
+Logistic regression & LIME & $0.77 \pm 0.07$ & $0.75 \pm 0.08$ & $0.75 \pm 0.09$ & $0.74 \pm 0.10$ & $0.73 \pm 0.11$\\
+Random forest & TreeSHAP & $1.00 \pm 0.00$ & $0.93 \pm 0.06$ & $0.90 \pm 0.07$ & $0.85 \pm 0.08$ & $0.79 \pm 0.08$\\
+Random forest & LIME & $0.80 \pm 0.07$ & $0.79 \pm 0.08$ & $0.78 \pm 0.08$ & $0.78 \pm 0.08$ & $0.77 \pm 0.08$\\
+Gradient boosting & TreeSHAP & $1.00 \pm 0.00$ & $0.89 \pm 0.07$ & $0.85 \pm 0.08$ & $0.79 \pm 0.08$ & $0.74 \pm 0.09$\\
+Gradient boosting & LIME & $0.72 \pm 0.09$ & $0.70 \pm 0.11$ & $0.69 \pm 0.11$ & $0.69 \pm 0.11$ & $0.68 \pm 0.11$\\
+MLP & IG & $1.00 \pm 0.00$ & $0.95 \pm 0.02$ & $0.92 \pm 0.03$ & $0.84 \pm 0.07$ & $0.75 \pm 0.10$\\
+MLP & LIME & $0.74 \pm 0.07$ & $0.73 \pm 0.09$ & $0.72 \pm 0.09$ & $0.71 \pm 0.10$ & $0.71 \pm 0.10$\\
+
+==================== TABLE 4 flip (tab:flip) pooled-by-model % ====================
+Logistic regression & 0.14 & 0.77 & 1.47 & 3.92 & 7.82\\
+Random forest & 0.76 & 1.89 & 3.09 & 5.54 & 8.14\\
+Gradient boosting & 3.10 & 5.56 & 7.08 & 10.04 & 13.02\\
+MLP & 0.11 & 0.88 & 1.77 & 4.15 & 8.10\\
+
+==================== TABLE 5 wilcoxon (tab:wilcoxon) ====================
+Adult & Logistic regression & LinearSHAP & 0.902 & 0.699 & $<10^{-4}$ & 1.00 & 0.929 & 0.151 & $<10^{-4}$ & 1.00\\
+ & Random forest & TreeSHAP & 0.933 & 0.798 & $<10^{-4}$ & 1.00 & 0.980 & 0.341 & $<10^{-4}$ & 1.00\\
+ & Gradient boosting & TreeSHAP & 0.858 & 0.634 & $<10^{-4}$ & 1.00 & 0.895 & 0.076 & $<10^{-4}$ & 1.00\\
+ & MLP & IG & 0.868 & 0.716 & $<10^{-4}$ & 1.00 & 0.942 & 0.340 & $<10^{-4}$ & 1.00\\
+German Credit & Logistic regression & LinearSHAP & 0.918 & 0.874 & $<10^{-4}$ & 0.68 & 0.994 & 0.944 & $<10^{-4}$ & 1.00\\
+ & Random forest & TreeSHAP & 0.918 & 0.778 & $<10^{-4}$ & 1.00 & 0.986 & 0.946 & $<10^{-4}$ & 1.00\\
+ & Gradient boosting & TreeSHAP & 0.875 & 0.720 & $<10^{-4}$ & 1.00 & 0.947 & 0.840 & $<10^{-4}$ & 1.00\\
+ & MLP & IG & 0.900 & 0.792 & $<10^{-4}$ & 0.97 & 0.986 & 0.925 & $<10^{-4}$ & 1.00\\
+Bank Marketing & Logistic regression & LinearSHAP & 0.940 & 0.769 & $<10^{-4}$ & 1.00 & 0.978 & 0.731 & $<10^{-4}$ & 1.00\\
+ & Random forest & TreeSHAP & 0.854 & 0.851 & $0.658$ & 0.07 & 0.901 & 0.933 & $0.062$ & $-0.30$\\
+ & Gradient boosting & TreeSHAP & 0.789 & 0.809 & $0.100$ & $-0.28$ & 0.871 & 0.882 & $0.954$ & $-0.01$\\
+ & MLP & IG & 0.884 & 0.762 & $<10^{-4}$ & 0.99 & 0.962 & 0.753 & $<10^{-4}$ & 1.00\\
+Default of credit card clients & Logistic regression & LinearSHAP & 0.782 & 0.583 & $<10^{-4}$ & 1.00 & 0.911 & 0.618 & $<10^{-4}$ & 1.00\\
+ & Random forest & TreeSHAP & 0.716 & 0.633 & $<10^{-4}$ & 0.76 & 0.786 & 0.446 & $<10^{-4}$ & 0.61\\
+ & Gradient boosting & TreeSHAP & 0.652 & 0.510 & $<10^{-4}$ & 0.99 & 0.700 & 0.477 & $0.006$ & 0.44\\
+ & MLP & IG & 0.706 & 0.546 & $<10^{-4}$ & 0.99 & 0.881 & 0.545 & $<10^{-4}$ & 0.94\\
+Electricity & Logistic regression & LinearSHAP & 0.892 & 0.763 & $<10^{-4}$ & 0.99 & 0.923 & 0.777 & $<10^{-4}$ & 1.00\\
+ & Random forest & TreeSHAP & 0.825 & 0.815 & $0.335$ & 0.16 & 0.753 & 0.684 & $<10^{-4}$ & 0.66\\
+ & Gradient boosting & TreeSHAP & 0.793 & 0.771 & $0.048$ & 0.33 & 0.751 & 0.743 & $0.399$ & 0.14\\
+ & MLP & IG & 0.848 & 0.758 & $<10^{-4}$ & 0.93 & 0.919 & 0.812 & $<10^{-4}$ & 0.91\\
+-- non-sig (sig_bonf False) --
+   bank_marketing rf top5: p=0.658 r=+0.07 holm_sig=False
+   bank_marketing rf cosine: p=0.062 r=-0.30 holm_sig=False
+   bank_marketing hgb top5: p=0.100 r=-0.28 holm_sig=False
+   bank_marketing hgb cosine: p=0.954 r=-0.01 holm_sig=False
+   ccdefault hgb cosine: p=0.006 r=+0.44 holm_sig=True
+   electricity rf top5: p=0.335 r=+0.16 holm_sig=False
+   electricity hgb top5: p=0.048 r=+0.33 holm_sig=False
+   electricity hgb cosine: p=0.399 r=+0.14 holm_sig=False
+sig: bonf=32 holm=33 bh=33 of 40; smallest sig r=0.61; max sig p=9.04e-05
+
+==================== TABLE 6 crossseed (tab:crossseed) top-5 per dataset ====================
+header: Model & Method & Adult & German & Bank & CC-default & Electricity\\
+Logistic regression & LinearSHAP & $1.00 \pm 0.00$ & $1.00 \pm 0.00$ & $1.00 \pm 0.00$ & $1.00 \pm 0.00$ & $1.00 \pm 0.00$\\
+Logistic regression & LIME & $0.72 \pm 0.06$ & $0.87 \pm 0.06$ & $0.78 \pm 0.08$ & $0.68 \pm 0.13$ & $0.79 \pm 0.08$\\
+Random forest & TreeSHAP & $0.93 \pm 0.06$ & $0.85 \pm 0.09$ & $0.90 \pm 0.08$ & $0.87 \pm 0.08$ & $0.93 \pm 0.07$\\
+Random forest & LIME & $0.80 \pm 0.09$ & $0.75 \pm 0.08$ & $0.86 \pm 0.06$ & $0.68 \pm 0.14$ & $0.84 \pm 0.07$\\
+Gradient boosting & TreeSHAP & $0.90 \pm 0.08$ & $0.71 \pm 0.11$ & $0.79 \pm 0.09$ & $0.71 \pm 0.11$ & $0.86 \pm 0.07$\\
+Gradient boosting & LIME & $0.62 \pm 0.06$ & $0.66 \pm 0.09$ & $0.81 \pm 0.07$ & $0.54 \pm 0.15$ & $0.79 \pm 0.07$\\
+MLP & IG & $0.85 \pm 0.08$ & $0.64 \pm 0.09$ & $0.79 \pm 0.09$ & $0.63 \pm 0.13$ & $0.86 \pm 0.08$\\
+MLP & KernelSHAP & $0.86 \pm 0.08$ & $0.68 \pm 0.09$ & $0.80 \pm 0.09$ & $0.64 \pm 0.11$ & $0.89 \pm 0.07$\\
+MLP & LIME & $0.70 \pm 0.08$ & $0.64 \pm 0.09$ & $0.75 \pm 0.09$ & $0.58 \pm 0.13$ & $0.77 \pm 0.07$\\
+cosine ranges per method (prose):
+   LinearSHAP: cos 1.00-1.00
+   TreeSHAP: cos 0.88-0.99
+   IG: cos 0.72-0.95
+   KernelSHAP: cos 0.82-0.98
+   LIME: cos 0.71-0.96
+method top5 means: {'TreeSHAP': np.float64(0.845), 'KernelSHAP': np.float64(0.774), 'IG': np.float64(0.756), 'LIME': np.float64(0.731)}
+
+==================== TABLE 8 mc (tab:mc) ====================
+Adult & 200 & 0.040 & 0.580 & $0.520$\\
+German Credit & 200 & 0.095 & 0.080 & $-0.106$\\
+Bank Marketing & 200 & 0.033 & 0.202 & $0.037$\\
+Default of credit card clients & 200 & 0.056 & -0.238 & $-0.629$\\
+Electricity & 200 & 0.072 & 0.200 & $0.400$\\
+
+==================== confidence (rho_conf_instab) ====================
+cells=45 span -0.644..0.662 median -0.014 |rho|>0.3: 18
+
+==================== TABLE spurious (tab:spur) ranges ====================
+rel_share 0.394-0.699; fast sal 0.363-0.721; fast top5 0.91-1.00; all rank1 True; LIME sal 0.149-0.538

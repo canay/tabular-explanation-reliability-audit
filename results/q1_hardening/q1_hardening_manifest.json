@@ -1,0 +1,48 @@
+{
+  "base_dir": "C:\\DOCS\\AKADEMIK\\CALISMALAR\\20_TASLAK_CALISMALAR\\SCI-f01-explanation_reliability",
+  "datasets": [
+    "adult",
+    "credit_g",
+    "bank_marketing",
+    "ccdefault",
+    "electricity"
+  ],
+  "lime_budgets": [
+    250,
+    1000,
+    3000
+  ],
+  "lime_models": [
+    "logreg",
+    "rf",
+    "hgb"
+  ],
+  "models": [
+    "logreg",
+    "rf",
+    "hgb",
+    "mlp"
+  ],
+  "run_started_utc": "2026-06-30T00:17:05Z",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "smoke": false,
+  "synthetic_models": [
+    "logreg",
+    "rf",
+    "hgb",
+    "mlp"
+  ],
+  "synthetic_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

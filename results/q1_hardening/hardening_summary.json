@@ -1,0 +1,9 @@
+{
+  "benchmark_results_exists": true,
+  "control_recovery_rows": 2125,
+  "lime_budget_rows": 180,
+  "lime_budget_skipped": 0,
+  "run_completed_utc": "2026-06-30T00:26:39Z",
+  "stability_rows": 4250,
+  "synthetic_rows": 100
+}
