@@ -52,7 +52,7 @@ def verify_inputs() -> None:
 def regenerate_summaries() -> None:
     run("code/s5_aggregate.py", "summary")
     run("analysis/scripts/variance_decomp.py")
-    run("analysis/scripts/eswa_extras.py")
+    run("analysis/scripts/rule_extras.py")
     run("analysis/scripts/decision_rule_robustness.py")
     run("analysis/scripts/round3_extras.py")
     run("analysis/scripts/manuscript_numbers.py")

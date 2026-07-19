@@ -2,7 +2,7 @@
   A2-08: clean descriptive top-5 real-vs-random paired significance test + bootstrap CI.
   A2-07: an operating 'report-or-flag' reliability rule validated against cross-seed
          instability, with per-method-group precision / recall / false-positive rate.
-Writes analysis/results/eswa_extras.txt and decision_rule.csv.
+Writes analysis/results/rule_extras.txt and decision_rule.csv.
 """
 import sys, io, os
 sys.path.insert(0, "code")
@@ -79,5 +79,5 @@ fn=((~df.flag)&(df.unreliable)).sum(); tn=((~df.flag)&(~df.unreliable)).sum()
 pr(f"  OVERALL          n={len(df)} prec={tp/(tp+fp):.2f} recall={tp/(tp+fn):.2f} FPR={fp/(fp+tn):.2f}")
 pr(f"  (TP={tp} FP={fp} FN={fn} TN={tn})")
 
-open("analysis/results/eswa_extras.txt","w").write(out.getvalue())
+open("analysis/results/rule_extras.txt","w").write(out.getvalue())
 print(out.getvalue())
