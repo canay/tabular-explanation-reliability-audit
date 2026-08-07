@@ -1,0 +1,41 @@
+{
+  "analysis": "clean-arm reference-target sensitivity",
+  "reads": "expl/base_{dataset}_{model}_{method}_{seed}_clean.npz",
+  "refits_models": false,
+  "recomputes_attributions": false,
+  "datasets": [
+    "adult",
+    "credit_g",
+    "bank_marketing",
+    "ccdefault",
+    "electricity"
+  ],
+  "models": [
+    "logreg",
+    "rf",
+    "hgb",
+    "mlp"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "targets": [
+    "positional",
+    "random",
+    "self_top5",
+    "loso_top5"
+  ],
+  "sources": [
+    "real",
+    "random",
+    "permuted",
+    "constant",
+    "oracle"
+  ],
+  "seed": 20260614,
+  "rows": 4500
+}

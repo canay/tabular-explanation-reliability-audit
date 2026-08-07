@@ -33,6 +33,7 @@ rebuilds the empirical figures in `figures/`.
 | `code/` | Data acquisition, training, explanation, perturbation, aggregation, and figure scripts |
 | `results/` | Frozen main-study artifacts, including the 44.9 MB per-instance perturbation table |
 | `results/q1_hardening/` | Negative/oracle controls, budget sweep, and synthetic ground-truth outputs |
+| `results/q1_target_sensitivity/` | Reference-target sensitivity outputs for the clean control-recovery arm |
 | `analysis/scripts/` | Extended uncertainty, variance-decomposition, fragility, and candidate-rule analyses |
 | `analysis/results/` | Frozen extended-analysis inputs and regenerated summaries |
 | `unc/` | Compact frozen MC-dropout link artifacts required by the final uncertainty figure |
@@ -76,6 +77,13 @@ The complete run is computationally expensive. Q1 hardening controls are
 implemented in `code/run_q1_hardening.py`; see `environment/ENVIRONMENT.md` for
 the original execution split and version notes.
 
+`code/run_target_sensitivity.py` belongs to this route rather than to
+`reproduce.py`, because it reads the per-instance base-explanation archives under
+`expl/`, which a full run writes into its own workspace and which this repository
+deliberately does not ship. Its frozen outputs are included under
+`results/q1_target_sensitivity/` and are covered by the input hash manifest, so
+the reported values can be inspected without rerunning the pipeline.
+
 ## Evidence map
 
 | Manuscript evidence | Reproduction source |
@@ -88,6 +96,7 @@ the original execution split and version notes.
 | Broader uncertainty and variance decomposition | `analysis/results/broader_uncertainty.csv`, `analysis/results/variance_decomp.csv` |
 | LIME budget and perturbation-strength sweeps | `results/q1_hardening/lime_budget_sweep_summary.csv`, `analysis/results/delta_sweep_agg.csv` |
 | Candidate report-or-flag rule | `analysis/results/decision_rule*.csv`, `analysis/scripts/decision_rule_robustness.py` |
+| Clean-arm reference-target sensitivity | `results/q1_target_sensitivity/target_sensitivity_summary.csv`, `code/run_target_sensitivity.py` |
 
 The candidate reliability rule is benchmark-calibrated, not externally
 validated. Dataset-level false-positive rates and whole-dataset cluster
