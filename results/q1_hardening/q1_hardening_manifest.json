@@ -1,5 +1,5 @@
 {
-  "base_dir": "C:\\DOCS\\AKADEMIK\\CALISMALAR\\20_TASLAK_CALISMALAR\\SCI-f01-explanation_reliability",
+  "base_dir": "<controlled-workspace>\\SCI-f01-explanation_reliability",
   "datasets": [
     "adult",
     "credit_g",
