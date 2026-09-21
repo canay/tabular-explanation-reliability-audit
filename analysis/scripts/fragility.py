@@ -16,6 +16,13 @@ out = io.StringIO()
 def pr(*a): print(*a, file=out)
 
 TAU = 0.80
+# Threshold tolerance, 2026-09-21. Every top-5 overlap is an integer count
+# over five, so an attainable mean can be mathematically equal to TAU while
+# floating point stores it as 0.7999999999999999. Comparing raw therefore
+# counted such a unit as below the threshold. TAU_TOL places a value equal
+# to TAU on the stable side; it is far below the smallest nonzero distance
+# between an attainable value and TAU (0.004 across the thresholds used).
+TAU_TOL = 1e-9
 def topk_margin(a, k=5):
     m = np.sort(np.abs(a))[::-1]
     if len(m) <= k or m[0] <= 0: return 1.0
@@ -43,7 +50,7 @@ df = mg.merge(ci, on=["ds","model","method","inst"]) \
        .merge(pert, on=["ds","model","method","inst"], how="left")
 df["samp"] = df["samp"].fillna(1.0); df["pert"] = df["pert"].fillna(1.0)
 df["group"] = np.where(df.method=="lime", "LIME", "Model-matched")
-df["unstable"] = (df.top5_seed < TAU).astype(int)
+df["unstable"] = (df.top5_seed < TAU - TAU_TOL).astype(int)
 
 pr("=== Does top-5 MARGIN predict cross-seed stability? Spearman(margin, crossseed top5) ===")
 for g, sub in df.groupby("group"):
@@ -74,7 +81,7 @@ for g, sub in df.groupby("group"):
 # Overall + explicit recall-gap-closing comparison at a fixed operating point
 pr("\n=== Operating point comparison (model-matched): old rule vs margin-augmented ===")
 mm = df[df.group=="Model-matched"]; y = mm.unstable.values
-old = (np.minimum(mm.samp.values, mm.pert.values) < TAU)
+old = (np.minimum(mm.samp.values, mm.pert.values) < TAU - TAU_TOL)
 # choose margin threshold delta to match ~0.20 FPR on model-matched
 from numpy import quantile
 for delta in [0.02, 0.05, 0.08, 0.10]:

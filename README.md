@@ -1,7 +1,11 @@
 # Tabular Explanation Reliability Audit
 
-Public replication package for *Reliability Limits of Post-Hoc Explanations
-for Tabular Models: Perturbation, Retraining, Sampling, and Shortcut Recovery*.
+Public replication package for the original benchmark in *Explanation Stability
+in Tabular Classification: Perturbation, Retraining, Sampling, and Shortcut
+Recovery*. The benchmark was previously titled *Reliability Limits of Post-Hoc
+Explanations for Tabular Models*. The additional S-LIME comparison is distributed
+separately with the revised manuscript as Online Resource 2; it is not part of
+this repository.
 
 The study audits post-hoc attribution reliability across five public tabular
 benchmarks and four model families. It separates prediction-preserving input
@@ -14,7 +18,7 @@ Faculty of Computer and Information Sciences, Sakarya University, Türkiye.
 ## Quick reproduction from archived artifacts
 
 The repository includes the per-instance and cell-level result artifacts needed
-to recompute the manuscript summaries, extended diagnostics, and figures without
+to recompute the original benchmark summaries, extended diagnostics, and figures without
 retraining models or rerunning explainers.
 
 ```bash
@@ -25,6 +29,11 @@ python reproduce.py --verify-inputs --all
 `reproduce.py` is non-destructive: it does not delete data or model artifacts.
 It verifies the frozen inputs, regenerates derived CSV/text summaries, and
 rebuilds the empirical figures in `figures/`.
+
+Figures are rebuilt with the plotting defaults in `code/s6_figures.py`. The
+manuscript applies a separate typography pass to the same plots, so a figure in
+`figures/` carries the same data as its published counterpart but not the same
+fonts, type sizes or legend placement.
 
 ## Repository structure
 
@@ -102,6 +111,10 @@ The candidate reliability rule is benchmark-calibrated, not externally
 validated. Dataset-level false-positive rates and whole-dataset cluster
 bootstrap intervals are included so pooled performance is not mistaken for a
 deployment guarantee.
+
+The confidence summary excludes the five deterministic logistic-regression/
+LinearSHAP cells, whose confidence–instability correlations are undefined. It
+reports 40 defined cells, matching the revised manuscript.
 
 ## License
 

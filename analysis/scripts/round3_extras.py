@@ -29,13 +29,14 @@ df = samp.merge(pert, on=["ds","model","method","inst"]).merge(gt, on=["ds","mod
 df = df.merge(frag, on=["ds","model","method","inst"], how="left")
 df["group"] = np.where(df.method == "lime", "LIME", "Model-matched")
 
+TAU_TOL = 1e-9  # see the 2026-09-21 threshold-tolerance note in rule_extras.py
 pr("===== A3-01: matched-sample AUCs (same sample as tab:rule; no imputation) =====")
 for g, sub in df.groupby("group"):
-    y = (sub.top5_seed < 0.80).astype(int).values
+    y = (sub.top5_seed < 0.80 - TAU_TOL).astype(int).values
     s_sc = 1 - np.minimum(sub.samp.values, sub.pert.values)
     auc_sc = roc_auc_score(y, s_sc)
     m = sub.dropna(subset=["margin"])
-    ym = (m.top5_seed < 0.80).astype(int).values
+    ym = (m.top5_seed < 0.80 - TAU_TOL).astype(int).values
     auc_mg = roc_auc_score(ym, 1 - m.margin.values) if len(m) else float("nan")
     pr(f"  {g:14s} n={len(sub):5d} base={y.mean():.3f}  AUC(self-consistency)={auc_sc:.3f}  "
        f"AUC(margin, same sample n={len(m)})={auc_mg:.3f}")
@@ -46,8 +47,8 @@ pr("\n===== A3-10: always-flag baseline + tau sensitivity (flag and ground truth
 rows = []
 for tau in [0.70, 0.80, 0.90]:
     for g, sub in df.groupby("group"):
-        flag = np.minimum(sub.samp.values, sub.pert.values) < tau
-        unrel = (sub.top5_seed < tau).values
+        flag = np.minimum(sub.samp.values, sub.pert.values) < tau - TAU_TOL
+        unrel = (sub.top5_seed < tau - TAU_TOL).values
         tp = (flag & unrel).sum(); fp = (flag & ~unrel).sum()
         fn = (~flag & unrel).sum(); tn = (~flag & ~unrel).sum()
         prec = tp/(tp+fp) if tp+fp else float("nan")
@@ -59,7 +60,7 @@ for tau in [0.70, 0.80, 0.90]:
            f"prec={prec:.2f} rec={rec:.2f} FPR={fpr:.2f}")
     pr("")
 for g, sub in df.groupby("group"):
-    base = (sub.top5_seed < 0.80).mean()
+    base = (sub.top5_seed < 0.80 - TAU_TOL).mean()
     pr(f"  always-flag baseline at tau=0.80, {g}: precision={base:.2f} recall=1.00 FPR=1.00")
 pd.DataFrame(rows).to_csv("analysis/results/round3_tau_sweep.csv", index=False)
 

@@ -21,6 +21,13 @@ from scipy.stats import spearmanr
 
 KEY = ["ds", "model", "method", "inst"]
 TAU = 0.80
+# Threshold tolerance, 2026-09-21. Every top-5 overlap is an integer count
+# over five, so an attainable mean can be mathematically equal to TAU while
+# floating point stores it as 0.7999999999999999. Comparing raw therefore
+# counted such a unit as below the threshold. TAU_TOL places a value equal
+# to TAU on the stable side; it is far below the smallest nonzero distance
+# between an attainable value and TAU (0.004 across the thresholds used).
+TAU_TOL = 1e-9
 BOOTSTRAP_REPLICATES = 20_000
 SEED = 20260718
 
@@ -71,8 +78,8 @@ def build_analysis_frame() -> pd.DataFrame:
         cross_seed[KEY + ["top5_seed"]], on=KEY, validate="one_to_one"
     )
     frame["cheap_overlap"] = frame[["samp_overlap", "pert_overlap"]].min(axis=1)
-    frame["flag"] = frame["cheap_overlap"].lt(TAU)
-    frame["unreliable"] = frame["top5_seed"].lt(TAU)
+    frame["flag"] = frame["cheap_overlap"].lt(TAU - TAU_TOL)
+    frame["unreliable"] = frame["top5_seed"].lt(TAU - TAU_TOL)
     frame["group"] = np.where(frame["method"].eq("lime"), "LIME", "Model-matched")
     return frame
 

@@ -44,6 +44,13 @@ pr("\n===== A2-07  Operating reliability rule (tau=0.80) =====")
 raw = pd.read_csv("results/perturb_raw.csv")
 ci = pd.read_csv("results/conf_instab_inst.csv")          # has top5_seed (cross-seed)
 TAU = 0.80
+# Threshold tolerance, 2026-09-21. Every top-5 overlap is an integer count
+# over five, so an attainable mean can be mathematically equal to TAU while
+# floating point stores it as 0.7999999999999999. Comparing raw therefore
+# counted such a unit as below the threshold. TAU_TOL places a value equal
+# to TAU on the stable side; it is far below the smallest nonzero distance
+# between an attainable value and TAU (0.004 across the thresholds used).
+TAU_TOL = 1e-9
 # cheap deploy-time diagnostics, per (ds,model,method,inst):
 samp = (raw[raw.sigma == 0.0].groupby(["ds","model","method","inst"])["top5"].mean()
         .rename("samp_overlap").reset_index())
@@ -54,8 +61,8 @@ gt = ci[["ds","model","method","inst","top5_seed"]]
 df = samp.merge(pert, on=["ds","model","method","inst"]).merge(gt, on=["ds","model","method","inst"])
 # cheap flag: low self-consistency under repeated sampling OR small perturbation
 df["cheap_overlap"] = df[["samp_overlap","pert_overlap"]].min(axis=1)
-df["flag"] = df["cheap_overlap"] < TAU
-df["unreliable"] = df["top5_seed"] < TAU            # ground truth: would change under retraining
+df["flag"] = df["cheap_overlap"] < TAU - TAU_TOL
+df["unreliable"] = df["top5_seed"] < TAU - TAU_TOL            # ground truth: would change under retraining
 df["group"] = np.where(df.method == "lime", "LIME (agnostic)", "Model-matched")
 rows = []
 for g, sub in df.groupby("group"):

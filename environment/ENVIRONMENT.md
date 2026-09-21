@@ -1,7 +1,9 @@
 # Environment notes
 
-The archived-artifact reproduction path was verified on 2026-07-18 with Python
-3.12.12 and the versions pinned in the root `requirements.txt`.
+The archived-artifact reproduction path was verified on 2026-07-18 and
+re-verified on 2026-09-21 with Python 3.12.12 and the versions pinned in the
+root `requirements.txt`. The 2026-09-21 run regenerated every summary artifact
+byte-identically to the values reported in the manuscript.
 
 The primary model-fitting and explanation run recorded Python 3.10.12 with
 NumPy 2.2.6, SciPy 1.15.3, scikit-learn 1.7.2, SHAP 0.48.0, LIME 0.2.0.1,
