@@ -1,0 +1,8 @@
+method_group,sampling_instab,perturbation_instab,retraining_instab,n_damage_rows,n_crossseed_rows
+"Model-matched, all families",0.0,0.1594,0.1385,4,20
+"Model-matched, stochastic trainers",0.0,0.1736,0.1847,3,15
+"LinearSHAP, logistic regression",0.0,0.1166,0.0,1,5
+"TreeSHAP, random forest",0.0,0.1519,0.1034,1,5
+"TreeSHAP, gradient boosting",0.0,0.2095,0.2066,1,5
+"IG, MLP",0.0,0.1596,0.244,1,5
+LIME,0.2438,0.2712,0.2687,4,20

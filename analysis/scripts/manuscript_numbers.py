@@ -85,8 +85,9 @@ csmin=stoch.top5_mean.idxmin()
 pr(f"    lowest cell: {cs.loc[csmin,'ds']} {cs.loc[csmin,'model']} {cs.loc[csmin,'method']} = {cs.loc[csmin,'top5_mean']:.2f}")
 
 # ---- 5. CONFIDENCE (rho_conf_instab) ----
-pr("\n=== CONFIDENCE rho_conf_instab (27 cells) ===")
-rho=cs["rho_conf_instab"].dropna()
+pr("\n=== CONFIDENCE rho_conf_instab (defined cells; deterministic LinearSHAP excluded) ===")
+# Deterministic logistic-regression/LinearSHAP cells have undefined correlation.
+rho=cs.loc[~((cs.model=="logreg") & (cs.method=="linshap")), "rho_conf_instab"].dropna()
 pr(f"  span {rho.min():.3f} to {rho.max():.3f}; median {rho.median():.3f}; |rho|>0.3 count = {(rho.abs()>0.3).sum()} of {len(rho)}")
 for m,meth,lbl in [("mlp","kshap","KernelSHAP/Adult"),("mlp","ig","IG/Adult")]:
     v=cs[(cs.ds=='adult')&(cs.model==m)&(cs.method==meth)].rho_conf_instab.values
@@ -120,7 +121,7 @@ pr(f"  fast salience share range = {fast.sal_share.min():.3f}-{fast.sal_share.ma
 pr(f"  fast top5 range = {fast.top5_frac.min():.2f}-{fast.top5_frac.max():.2f}; all rank 1? {(fast.attr_rank==1).all()}")
 pr(f"  LIME salience share range = {lime.sal_share.min():.3f}-{lime.sal_share.max():.3f}")
 
-# ---- 9. vardecomp / delta / broader uncertainty / hardening (q1-audit + hardening) ----
+# ---- 9. vardecomp / delta / broader uncertainty / hardening ----
 pr("\n=== ADDITIONAL ANALYSES (analysis/results, hardening) ===")
 for f,lbl in [("analysis/results/variance_decomp.csv","vardecomp"),
               ("analysis/results/delta_sweep_agg.csv","delta_agg"),

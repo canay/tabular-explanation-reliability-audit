@@ -1,4 +1,4 @@
-"""Q1-audit A-010: shortcut-recovery vs injected-signal strength (delta sweep).
+"""Shortcut recovery versus injected-signal strength (delta sweep).
 
 Reuses code/common.py (datasets, models, explainers, metrics) and the cached
 data/*.npz. For each delta it re-injects the spurious feature

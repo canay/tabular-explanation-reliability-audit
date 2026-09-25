@@ -1,6 +1,6 @@
-"""P1 analyses for the ESWA round-2 revision (run from project root):
-  A2-08: clean descriptive top-5 real-vs-random paired significance test + bootstrap CI.
-  A2-07: an operating 'report-or-flag' reliability rule validated against cross-seed
+"""Supplementary decision-rule analyses (run from project root):
+  - clean descriptive top-5 real-vs-random paired significance test + bootstrap CI;
+  - an operating 'report-or-flag' reliability rule validated against cross-seed
          instability, with per-method-group precision / recall / false-positive rate.
 Writes analysis/results/rule_extras.txt and decision_rule.csv.
 """

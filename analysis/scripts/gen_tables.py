@@ -76,7 +76,8 @@ for ds in DS:
     print(f"{DSL[ds]} & 200 & {r.pred_std_mean:.3f} & {r.rho_mc_seed_instab:.3f} & {rp}\\\\")
 
 print("\n==================== confidence (rho_conf_instab) ====================")
-rho=cs["rho_conf_instab"].dropna()
+# Deterministic logistic-regression/LinearSHAP cells have undefined correlation.
+rho=cs.loc[~((cs.model=="logreg") & (cs.method=="linshap")), "rho_conf_instab"].dropna()
 print(f"cells={len(rho)} span {rho.min():.3f}..{rho.max():.3f} median {rho.median():.3f} |rho|>0.3: {(rho.abs()>0.3).sum()}")
 
 print("\n==================== TABLE spurious (tab:spur) ranges ====================")

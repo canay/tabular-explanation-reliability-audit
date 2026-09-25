@@ -1,11 +1,11 @@
-"""Round 3 (A3-01, A3-02, A3-10) supplementary computations from FROZEN artifacts.
+"""Supplementary computations from FROZEN artifacts.
 No training, no explainer calls. Run from project root.
 Outputs: analysis/results/round3_rule_extras.txt (+ tau sweep CSV).
 - Matched-sample AUCs: self-consistency score (1 - min(samp,pert)) vs margin, both
   against the same cross-seed instability target, on the SAME n=1000/4000 sample as
   Table tab:rule (rule_extras.py inner-join sample; no fillna imputation).
 - Always-flag baseline and tau sensitivity {0.70, 0.80, 0.90} for the rule.
-- Wilcoxon effect-size CI verification for the 8 non-Bonferroni cells (A3-02).
+- Wilcoxon effect-size CI verification for the 8 non-Bonferroni cells.
 """
 import sys, io, os
 sys.path.insert(0, "code")

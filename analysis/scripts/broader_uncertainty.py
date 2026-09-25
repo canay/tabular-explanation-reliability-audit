@@ -1,4 +1,4 @@
-"""Q1-audit A-010: broaden the uncertainty proxy beyond MC dropout.
+"""Broaden the uncertainty proxy beyond MC dropout.
 
 For the clean MLPs this computes two additional per-instance uncertainty signals
 and correlates each (Spearman, with a Fisher-z 95% CI) with Integrated Gradients

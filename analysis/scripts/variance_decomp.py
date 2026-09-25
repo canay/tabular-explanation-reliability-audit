@@ -1,12 +1,13 @@
-"""Q1-audit A-011: decompose top-5 explanation instability into its sources.
+"""Probe-conditioned top-5 instability for the pooled method groups (Table 2).
 
-Uses only frozen result CSVs (no retraining). For each method family it reports
-the mean top-5 instability (1 - mean top-5 overlap) attributable to:
+Uses only frozen result CSVs (no retraining). For each method group it reports
+the mean top-5 instability (1 - mean top-5 overlap) under three probes:
   sampling      explainer self-disagreement at sigma=0 (identical input)
   perturbation  prediction-preserving input noise at sigma=0.25
   retraining    cross-seed disagreement (different fitted instance)
-This shows that for the model-matched methods perturbation and retraining
-dominate while sampling is ~0, whereas for LIME sampling dominates.
+The three values are probe-conditioned totals measured on different analysis
+sets; they are not additive components of one total instability. The
+stochastic-trainer and per-family rows come from variance_decomp_families.py.
 """
 import os, csv
 from collections import defaultdict

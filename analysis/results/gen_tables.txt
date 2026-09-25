@@ -100,7 +100,7 @@ Default of credit card clients & 200 & 0.056 & -0.238 & $-0.629$\\
 Electricity & 200 & 0.072 & 0.200 & $0.400$\\
 
 ==================== confidence (rho_conf_instab) ====================
-cells=45 span -0.644..0.662 median -0.014 |rho|>0.3: 18
+cells=40 span -0.644..0.662 median -0.048 |rho|>0.3: 18
 
 ==================== TABLE spurious (tab:spur) ranges ====================
 rel_share 0.394-0.699; fast sal 0.363-0.721; fast top5 0.91-1.00; all rank1 True; LIME sal 0.149-0.538

@@ -1,4 +1,4 @@
-"""Round 3 figure regeneration (A3-07, A3-08, A3-33) from FROZEN artifacts only.
+"""Figure regeneration from FROZEN artifacts only.
 - fig_mcdropout_link: 3 -> 5 dataset panels (2x3 grid, last cell hidden).
 - fig_q1_control_recovery: only real/random/oracle (matches caption + tab:hardening), no in-figure title.
 - fig_q1_lime_budget_tradeoff: no in-figure title, legend moved clear of the runtime line.

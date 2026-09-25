@@ -1,4 +1,4 @@
-"""Q1-audit A-010 extension: delta-sweep for the LINEAR family without shap/sklearn.
+"""Delta sweep for the LINEAR family without shap/sklearn.
 
 For a logistic-regression model, exact interventional LinearSHAP is closed form,
 phi_j(x) = w_j * (x_j - E[x_j]); the linear model is trained here with a pure

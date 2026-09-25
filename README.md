@@ -2,10 +2,8 @@
 
 Public replication package for the original benchmark in *Explanation Stability
 in Tabular Classification: Perturbation, Retraining, Sampling, and Shortcut
-Recovery*. The benchmark was previously titled *Reliability Limits of Post-Hoc
-Explanations for Tabular Models*. The additional S-LIME comparison is distributed
-separately with the revised manuscript as Online Resource 2; it is not part of
-this repository.
+Recovery*. The additional S-LIME comparison is distributed separately with the
+manuscript as Online Resource 2; it is not part of this repository.
 
 The study audits post-hoc attribution reliability across five public tabular
 benchmarks and four model families. It separates prediction-preserving input
@@ -43,7 +41,7 @@ fonts, type sizes or legend placement.
 | `results/` | Frozen main-study artifacts, including the 44.9 MB per-instance perturbation table |
 | `results/q1_hardening/` | Negative/oracle controls, budget sweep, and synthetic ground-truth outputs |
 | `results/q1_target_sensitivity/` | Reference-target sensitivity outputs for the clean control-recovery arm |
-| `analysis/scripts/` | Extended uncertainty, variance-decomposition, fragility, and candidate-rule analyses |
+| `analysis/scripts/` | Extended uncertainty, probe-conditioned instability, fragility, and candidate-rule analyses |
 | `analysis/results/` | Frozen extended-analysis inputs and regenerated summaries |
 | `unc/` | Compact frozen MC-dropout link artifacts required by the final uncertainty figure |
 | `figures/` | Reproducible empirical figures in PDF and PNG |
@@ -102,7 +100,7 @@ the reported values can be inspected without rerunning the pipeline.
 | Wilcoxon tests, multiplicity corrections, and effect sizes | `results/wilcoxon.csv` |
 | Cross-seed instability and confidence diagnostics | `results/crossseed.csv`, `results/conf_instab_inst.csv` |
 | Shortcut reliance and attribution recovery | `results/spurious.csv`, `results/q1_hardening/` |
-| Broader uncertainty and variance decomposition | `analysis/results/broader_uncertainty.csv`, `analysis/results/variance_decomp.csv` |
+| Broader uncertainty and probe-conditioned instability (Table 2) | `analysis/results/broader_uncertainty.csv`, `analysis/results/variance_decomp.csv`, `analysis/results/variance_decomp_families.csv` |
 | LIME budget and perturbation-strength sweeps | `results/q1_hardening/lime_budget_sweep_summary.csv`, `analysis/results/delta_sweep_agg.csv` |
 | Candidate report-or-flag rule | `analysis/results/decision_rule*.csv`, `analysis/scripts/decision_rule_robustness.py` |
 | Clean-arm reference-target sensitivity | `results/q1_target_sensitivity/target_sensitivity_summary.csv`, `code/run_target_sensitivity.py` |
@@ -114,7 +112,7 @@ deployment guarantee.
 
 The confidence summary excludes the five deterministic logistic-regression/
 LinearSHAP cells, whose confidence–instability correlations are undefined. It
-reports 40 defined cells, matching the revised manuscript.
+reports 40 defined cells, matching the manuscript.
 
 ## License
 

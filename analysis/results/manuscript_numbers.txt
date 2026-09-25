@@ -49,8 +49,8 @@
     kshap range 0.64-0.89
     lowest cell: ccdefault mlp ig = 0.63
 
-=== CONFIDENCE rho_conf_instab (27 cells) ===
-  span -0.644 to 0.662; median -0.014; |rho|>0.3 count = 18 of 45
+=== CONFIDENCE rho_conf_instab (defined cells; deterministic LinearSHAP excluded) ===
+  span -0.644 to 0.662; median -0.048; |rho|>0.3 count = 18 of 40
     Adult KernelSHAP rho=-0.64
     Adult IG rho=-0.55
     bank_marketing hgb LIME rho=+0.34
